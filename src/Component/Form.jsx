@@ -2,31 +2,62 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../Redux/TaskSlice";
 import Button from "react-bootstrap/Button";
+import "./Form.css";
+import Header from "./Header";
+import ShowList from "./ShowList";
 
 export default function Form() {
+  const despatch = useDispatch();
 
-    const despatch=useDispatch()
-  const [newTask, setNewTask] = useState(null);
+  // const [newTask, setNewTask] = useState(null);
+  const [inputvalue, setinputvalue] = useState("");
 
-  const onchangeHandler=(e)=>{
-      setNewTask(()=>e.target.value)
-    //   console.log(newTask);
-  }
-  const submitHandler = (e) => {
+  console.log(inputvalue);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const task={
-        name:newTask,
-        id:Date.now(),
-        complete:false
-    }
 
-    despatch(addTask(task))
+    if (inputvalue.trim() !== "") {
+      const task = {
+        id: Date.now(),
+        text: inputvalue,
+        complited: false,
+      };
+
+      despatch(addTask(task));
+      setinputvalue("");
+    }
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <input className="mb-3" onChange={onchangeHandler} type="text" name="task" placeholder="Enter here..." />
-      <Button variant="success" type="submit">ADD</Button>
-    </form>
+    <div className="container">
+      <div className="app-wrapper">
+        <div>
+          <Header />
+        </div>
+        <div>
+          <div className="form">
+            <input
+              type="text"
+              name="task"
+              placeholder="Enter here..."
+              value={inputvalue}
+              onChange={(e) => setinputvalue(e.target.value)}
+            />
+            <Button
+              style={{ padding: "10px", width: "80px" }}
+              variant="success"
+              type="submit"
+              onClick={handleSubmit}
+            >
+              ADD
+            </Button>
+          </div>
+        </div>
+        <div>
+          <ShowList />
+        </div>
+      </div>
+    </div>
   );
 }

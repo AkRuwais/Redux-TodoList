@@ -20,12 +20,15 @@ function Edit({ id, taskName }) {
 
   const handleEdit_ = (id) => {
     // console.log(id);
-    const updatedTask = {
-      task: newTask,
-      id: id,
-    };
-    dispatch(editTask(updatedTask));
-    setShow(false);
+    if (newTask.trim() !== "") {
+      const updatedTask = {
+        text: newTask,
+        id: id,
+      };
+
+      dispatch(editTask(updatedTask));
+      setShow(false);
+    }
   };
 
   return (
@@ -41,7 +44,7 @@ function Edit({ id, taskName }) {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Edit Todo Content</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <input type="text" defaultValue={taskName} onChange={editInput} />

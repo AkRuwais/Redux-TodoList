@@ -12,7 +12,7 @@ const TodoSlice = createSlice({
     },
     editTask: (state, action) => {
       const data = state.tasks.find((e) => e.id == action.payload.id);
-      data.name = action.payload.task;
+      data.text = action.payload.text;
     },
     deleteTask: (state, action) => {
       // console.log(current(state));
