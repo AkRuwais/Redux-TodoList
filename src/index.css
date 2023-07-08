@@ -2,6 +2,11 @@
   margin: 0;
   padding: 0;
 }
+body {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
 .container {
   background: linear-gradient(to right bottom, #ec9f4e, #efc7a2);
   min-width: 100vw;
@@ -12,7 +17,6 @@
 }
 .app-wrapper {
   background-color: #122e3b;
-  /* min-width: 550px; */
   min-height: 650px;
   padding: 30px;
   box-sizing: border-box;
@@ -20,12 +24,6 @@
   box-shadow: 3px 6px 40px #000;
   margin-bottom: 10px;
 }
-
-
-
-
-
-
 
 /* .form{
       background-color: #6a3ce9;

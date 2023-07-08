@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { editTask } from "../Redux/TaskSlice";
 import { useDispatch } from "react-redux";
+import "./EditTask.css"
 
 function Edit({ id, taskName }) {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function Edit({ id, taskName }) {
       </Button>
 
       <Modal
+      className="modal"
         show={show}
         onHide={handleClose}
         backdrop="static"
